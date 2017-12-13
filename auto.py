@@ -59,13 +59,18 @@ def writeResultGivenCrib(ctext, crib):
 	results = sxor(ctext, crib)
 	results_len = len(results)
 	# Write to the output (Append)
-	with open("auto_output.txt", "a") as text_file:
+	with open(FILE_NAME, "a") as text_file:
 		text_file.write(crib + "(" + str(results_len) + "): [ " + ', '.join(results) + " ]\n")
 
 # Provide the Hexidecimal version of cipher_text here
 CIPHER_HEX = "1b1b522d0b04451a031652425e5e4e12595e1761413e0d0a492604080c4d002a001b0a0b0b5e003d0104011c003f081f45154115060b1d594e29100849011b4139411548051c01090024100000010300475718535a5e524c474440434e57001d444f00450b0a151f04540f1d014d420d1d0445150153081a0d4f0f4d1807131b54541c0d456928160c044e732c0f021e0d52364534191c0d01415c202c3d0500220645221c01171152221f181f434e314548151a4541390d4b261f0c171a0000161d1a180d0f170c434e490f4e2652060001161a536906050d415e523b11070a0b0307120016131b180a01411b41005504180a52070a0a000d1f00034f170445060f1c4d273d6a00150601001117134f5423190d4e633d020f0a1c0700201a5204010345461f521b0545416621060a543006101d4d030f190818104f01466c0406170d1b044e1d1d00071d021c0009410241110d0c014e42000045104f490f4c180712003a0d1148151d1f1207061a4c081a1d000f01114c010c004477084b0b0c170b070454684f211b16081a0e481d"
 # Decode the hexidecimal cipher text
 cipher_text = CIPHER_HEX.decode('hex')
+# File Name
+FILE_NAME = "auto_output.txt"
+
+# Clear the content of the output file before starting to append
+open(FILE_NAME, 'w').close()
 
 # Iterate through the crib word list
 for ind, crib in enumerate(crib_list):
